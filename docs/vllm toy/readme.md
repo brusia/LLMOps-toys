@@ -19,10 +19,10 @@ INFO:httpx:HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HT
 ## Скриншоты mlflow
 
 
-[Experiments](docs/vllm toy/screenshots/mlflow_exp.png)
+[Experiments](screenshots/mlflow_exp.png)
 
-[Run_details](docs/vllm toy/screenshots/mlflow_res.png)
+[Run_details](screenshots/mlflow_res.png)
 
-[Metrics](docs/vllm toy/screenshots/mlflow_metrics.png)
+[Metrics](screenshots/mlflow_metrics.png)
 
 Заметно, что обращение при помощи requests существенно быстрее.
