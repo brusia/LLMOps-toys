@@ -1,0 +1,4 @@
+text,sentiment,entities,label
+отличный iphone 14 PRO!!!  купил в магазине  apple на тверской 😊. Камера супер,POSITIVE,"PRODUCT, ORGANIZATION, LOCATION",1
+УЖАСНОЕ обслуживание в сбербанке на красной площади.. менеджер иван петров вобще не помог(,NEGATIVE,"ORGANIZATION, PERSON, LOCATION",-1
+Спасибо огромное сотрудникам МТС за то что 3 часа держали меня в очереди! Просто восхитительно 👏,NEGATIVE,"ORGANIZATION, PERSON",-1
