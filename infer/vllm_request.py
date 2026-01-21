@@ -1,28 +1,12 @@
-from prompting import call_openai_api, setup_openai_api
+from data_engineering.prompting import call_openai_api, setup_openai_api
 import time
 import os
 import requests
 from typing import Dict, Any
 import mlflow
 
-def get_model_response(question: str, model = "Qwen3-Coder-30B-A3B-Instruct-FP8") -> Dict[str, Any]:
-    """
-    Отправляет вопрос модели через HTTP-запрос и возвращает ответ
-    
-    :param question: Вопрос для модели
-    :return: Словарь с ответом модели
-    """
-    # URL API модели (пример)
-    api_key = os.getenv("OPENAI_API_KEY")
-    api_url = f"{os.getenv('OPENAI_API_BASE')}/chat/completions"
-    
-    # Проверка наличия необходимых переменных окружения
-    if not api_key:
-        return {"error": "Переменная окружения OPENAI_API_KEY не установлена"}
-    
-    if not api_url:
-        return {"error": "Переменная окружения OPENAI_API_BASE не установлена"}
-    
+
+def get_response(api_key: str, api_url: str, question: str, model = "Qwen3-Coder-30B-A3B-Instruct-FP8") -> Dict[str, Any]:
     # Параметры запроса
     payload = {
         "model": model,
@@ -32,7 +16,7 @@ def get_model_response(question: str, model = "Qwen3-Coder-30B-A3B-Instruct-FP8"
                 "content": question
             }
         ],
-        "max_tokens": 150,
+        "max_tokens": 500,
         "temperature": 0.7
     }
     
@@ -62,6 +46,28 @@ def get_model_response(question: str, model = "Qwen3-Coder-30B-A3B-Instruct-FP8"
         return {"error": f"Ошибка запроса: {e}"}
     except Exception as e:
         return {"error": f"Неожиданная ошибка: {e}"}
+
+
+def get_model_response(question: str, model = "Qwen3-Coder-30B-A3B-Instruct-FP8") -> Dict[str, Any]:
+    """
+    Отправляет вопрос модели через HTTP-запрос и возвращает ответ
+    
+    :param question: Вопрос для модели
+    :return: Словарь с ответом модели
+    """
+    # URL API модели (пример)
+    api_key = os.getenv("OPENAI_API_KEY")
+    api_url = f"{os.getenv('OPENAI_API_BASE')}/chat/completions"
+    
+    # Проверка наличия необходимых переменных окружения
+    if not api_key:
+        return {"error": "Переменная окружения OPENAI_API_KEY не установлена"}
+    
+    if not api_url:
+        return {"error": "Переменная окружения OPENAI_API_BASE не установлена"}
+    
+    return get_response(api_key, api_url, question, model)
+
 
 # Пример использования
 if __name__ == "__main__":

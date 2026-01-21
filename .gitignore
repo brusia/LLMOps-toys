@@ -1,3 +1,5 @@
+cache
+models
 .vscode
 .venv
 .mypy_cache

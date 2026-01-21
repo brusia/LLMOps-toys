@@ -13,7 +13,7 @@ from transformers import pipeline
 from openai import OpenAI
 import os
 from analyse import AnalysisResult
-from data_engineering import clean_text
+from data_engineering.data_engineering import clean_text
 import logging
 
 

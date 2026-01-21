@@ -1,4 +1,4 @@
-from analyse import AnalysisResult
+from data_engineering.analyse import AnalysisResult
 import os
 import time
 from typing import Dict, Any, List
@@ -79,7 +79,7 @@ def call_openai_api(client: OpenAI, prompt: str, text: str, model: str = "Qwen3-
             model=model,
             messages=[
                 {"role": "system", "content": "Вы - помощник по анализу текста."},
-                {"role": "user", "content": prompt.format(text=text)}
+                {"role": "user", "content": str.format(prompt, text=text)}
             ],
             temperature=0.1,
             max_tokens=200
