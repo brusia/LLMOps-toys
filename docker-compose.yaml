@@ -70,6 +70,55 @@ services:
     ports:
       - "5000:5000"
 
+  vllm_qwen:
+    image: kebe/vllm-openai:v0.10.0-macos
+    container_name: vllm_qwen
+    restart: unless-stopped
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./cache:/root/.cache/huggingface
+      - ./models:/models
+    command: >
+      --model "Qwen/Qwen2.5-0.5B-Instruct"
+      --host 0.0.0.0
+      --port 8000
+      --max-model-len 1024
+      --max-num-batched-tokens 2028
+      --download-dir /models
+    mem_limit: 4g
+    # Установите минимальные ресурсы
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+
+  vllm_deepseek:
+    image: kebe/vllm-openai:v0.10.0-macos
+    container_name: vllm_deepseek
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./cache:/root/.cache/huggingface
+      - ./models:/models
+    command: >
+      --model "alamios/DeepSeek-R1-DRAFT-Qwen2.5-0.5B"
+      --host 0.0.0.0
+      --port 8000
+      --max-model-len 2048
+      --max-num-batched-tokens 4096
+      --download-dir /models
+    mem_limit: 4g
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+
 networks:
   default:
     name: mlflow-network
