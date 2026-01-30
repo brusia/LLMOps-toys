@@ -45,12 +45,12 @@ export OPENAI_API_BASE="ваш_OperAI_endpoint_url"
 
 ### 1. Подготовка данных
 
-Файл `data_engineering/main.py` содержит функцию `load_raw_data()` для загрузки сырых данных. В текущей реализации используются тестовые отзывы.
+Файл `src/llmops_toys/data_engineering/main.py` содержит функцию `load_raw_data()` для загрузки сырых данных. В текущей реализации используются тестовые отзывы.
 
 ### 2. Запуск анализа
 
 ```bash
-uv run data_engineering/main.py
+uv run src/llmops_toys/data_engineering/main.py
 ```
 
 ### 3. Результаты
@@ -446,36 +446,36 @@ Hugging face results:
 Время анализа сущностей: 0.0284 сек
 Общее время: 0.0588 сек
 ------------------------------------------------------------
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
-HTTP Request: POST https://llm-api.vllm_local/v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
+HTTP Request: POST http://localhost:8000//v1/chat/completions "HTTP/1.1 200 OK"
 LLM results:
 ============================================================
 РЕЗУЛЬТАТ АНАЛИЗА
