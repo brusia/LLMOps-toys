@@ -1,4 +1,4 @@
-from analyse import AnalysisResult
+from data_engineering.analyse import AnalysisResult
 import os
 import time
 from typing import Dict, Any, List
@@ -64,7 +64,7 @@ def setup_openai_api():
     return client
 
 
-def call_openai_api(client: OpenAI, prompt: str, text: str, model: str = "Qwen3-Coder-30B-A3B-Instruct-FP8") -> Dict[str, Any]:
+def call_openai_api(client: OpenAI, prompt: str, text: str, model: str = "Qwen3-Coder-30B-A3B-Instruct-FP8", temperature=0.7, max_tokens=500) -> Dict[str, Any]:
     """
     Вызов OpenAI API с промптом
     
@@ -79,10 +79,10 @@ def call_openai_api(client: OpenAI, prompt: str, text: str, model: str = "Qwen3-
             model=model,
             messages=[
                 {"role": "system", "content": "Вы - помощник по анализу текста."},
-                {"role": "user", "content": prompt.format(text=text)}
+                {"role": "user", "content": str.format(prompt, text=text)}
             ],
-            temperature=0.1,
-            max_tokens=200
+            temperature=temperature,
+            max_tokens=max_tokens
         )
         
         content = response.choices[0].message.content.strip()

@@ -1,0 +1,124 @@
+volumes:
+  pgdata:
+  minio-data:
+
+services:
+  
+  postgres_mlflow:
+    image: postgres:13
+    container_name: mlflow_postgres
+    environment:
+      POSTGRES_USER: mlflow
+      POSTGRES_PASSWORD: mlflow
+      POSTGRES_DB: mlflow
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "mlflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: always
+
+  minio:
+    image: minio/minio:latest
+    container_name: mlflow-minio
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - minio-data:/data
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${MINIO_PORT}/minio/health/live"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  create-bucket:
+    image: minio/mc:latest
+    container_name: mlflow-create-bucket
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        mc alias set myminio "http://${MINIO_HOST}:${MINIO_PORT}" \
+          "${MINIO_ROOT_USER}" "${MINIO_ROOT_PASSWORD}"
+        mc mb --ignore-existing "myminio/${MINIO_BUCKET:-mlflow}"
+    restart: "no"
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.2.0
+    container_name: mlflow_server
+    environment:
+      - MLFLOW_S3_ENDPOINT_URL=${MLFLOW_S3_ENDPOINT_URL}
+      - AWS_ACCESS_KEY_ID=${MINIO_ROOT_USER}
+      - AWS_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}
+    command: mlflow server --host 0.0.0.0 --port 5000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+
+    ports:
+      - "5000:5000"
+
+  vllm_qwen:
+    image: kebe/vllm-openai:v0.10.0-macos
+    container_name: vllm_qwen
+    restart: unless-stopped
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./cache:/root/.cache/huggingface
+      - ./models:/models
+    command: >
+      --model "Qwen/Qwen2.5-0.5B-Instruct"
+      --host 0.0.0.0
+      --port 8000
+      --max-model-len 1024
+      --max-num-batched-tokens 2028
+      --download-dir /models
+    mem_limit: 4g
+    # Установите минимальные ресурсы
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+
+  vllm_deepseek:
+    image: kebe/vllm-openai:v0.10.0-macos
+    container_name: vllm_deepseek
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./cache:/root/.cache/huggingface
+      - ./models:/models
+    command: >
+      --model "alamios/DeepSeek-R1-DRAFT-Qwen2.5-0.5B"
+      --host 0.0.0.0
+      --port 8000
+      --max-model-len 2048
+      --max-num-batched-tokens 4096
+      --download-dir /models
+    mem_limit: 4g
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+
+networks:
+  default:
+    name: mlflow-network

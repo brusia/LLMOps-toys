@@ -1,4 +1,4 @@
-from compare import ModelComparison
+from data_engineering.compare import ModelComparison
 
 
 import json
@@ -16,9 +16,9 @@ from transformers import pipeline, Pipeline
 
 import torch
 
-from analyse import analyze_with_huggingface
-from data_engineering import markup_data, clean_text
-from prompting import analyze_text_with_prompts
+from data_engineering.analyse import analyze_with_huggingface
+from data_engineering.data_engineering import markup_data, clean_text
+from data_engineering.prompting import analyze_text_with_prompts
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
