@@ -1,0 +1,12 @@
+defaults:
+  - model: ruBert
+  - _self_
+
+settings:
+  # text_to_analyse: "Базовые модели открыли путь множеству новых сценариев применения AI, одновременно снизив входной порог для создания продуктов на основе искусственного интеллекта. Так AI из тайного учения превратился в мощный инструмент разработки, доступный каждому — даже тем, у кого еще нет опыта работы с ним. В этом практическом руководстве Чип Хьюен рассказывает об AI-инженерии — процессе создания приложений на основе готовых базовых моделей. Разработчики таких приложений узнают, как ориентироваться на огромных просторах искусственного интеллекта: научатся разбираться в типах моделей, наборах данных, эталонных тестах для их оценки и, на первый взгляд, бесконечном множестве шаблонов приложений. В книге также представлена практическая методика разработки приложения на основе AI и его эффективного развертывания."
+  language: english
+  text_to_analyse: "Foundation models have enabled many new AI use cases while lowering the barriers to entry for building AI products. This has transformed AI from an esoteric discipline into a powerful development tool that anyone can use—including those with no prior AI experience. In this accessible guide, author Chip Huyen discusses AI engineering: the process of building application with readily available foundation models. AI application developers will discover how to navigate the AI landscape, including models, datasets, evaluation benchmarks, and the seemingly infinite number of application patterns. The book also introduces a practical framework for developing an AI application and efficiently deploying it."
+
+visualize:
+  output_dir: "docs/visualize_attention/${model.short_name}"
+  font_size: 1
