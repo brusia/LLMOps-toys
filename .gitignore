@@ -1,5 +1,8 @@
-cache
+mlruns
 models
+outputs
+multirun
+cache
 .vscode
 .venv
 .mypy_cache
