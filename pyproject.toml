@@ -20,6 +20,18 @@ dependencies = [
 ]
 
 [dependency-groups]
+agents = [
+    "chromadb>=1.5.0",
+    "langchain>=1.2.10",
+    "langchain-chroma>=1.1.0",
+    "langchain-community>=0.4.1",
+    "langchain-huggingface>=1.2.0",
+    "langchain-openai>=1.1.9",
+    "langfuse>=3.12.1",
+    "llama-index>=0.14.14",
+    "pypdf>=6.7.0",
+    "sentence-transformers>=5.2.2",
+]
 metrics = [
     "nltk>=3.9.2",
     "rouge-score>=0.1.2",

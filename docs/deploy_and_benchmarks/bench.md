@@ -14,7 +14,7 @@ docker-compose приложен.
 
 ```bash
 uv sync --group metrics --group mlflow
-docker compose --env-file env_file up -d
+docker compose --env-file env_file --file docker-compose.mlflow-vllm.yaml up -d
 uv run src/llmops_toys/infer/metrics.py
 ```
 
