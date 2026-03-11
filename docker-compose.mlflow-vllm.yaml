@@ -8,9 +8,9 @@ services:
     image: postgres:13
     container_name: mlflow_postgres
     environment:
-      POSTGRES_USER: mlflow
-      POSTGRES_PASSWORD: mlflow
-      POSTGRES_DB: mlflow
+      POSTGRES_USER: ${POSTGRES_MLFLOW_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_MLFLOW_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_MLFLOW_DB}
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -50,7 +50,7 @@ services:
       - |
         mc alias set myminio "http://${MINIO_HOST}:${MINIO_PORT}" \
           "${MINIO_ROOT_USER}" "${MINIO_ROOT_PASSWORD}"
-        mc mb --ignore-existing "myminio/${MINIO_BUCKET:-mlflow}"
+        mc mb --ignore-existing "myminio/${MINIO_MLFLOW_BUCKET:-mlflow}"
     restart: "no"
 
   mlflow:

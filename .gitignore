@@ -1,6 +1,7 @@
 mlruns
 models
 outputs
+.history
 multirun
 cache
 .vscode
@@ -10,3 +11,4 @@ cache
 .python-version
 __pycache__
 env_file
+extracted_texts

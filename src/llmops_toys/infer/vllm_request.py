@@ -91,4 +91,3 @@ if __name__ == "__main__":
     openai_vllm_end_time = time.time()
     mlflow.log_metric("openai_request_time", openai_vllm_end_time - openai_vllm_start_time)
     mlflow.log_param("openai_responce", openai_result)
-    
