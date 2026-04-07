@@ -12,6 +12,7 @@ dependencies = [
     "openai>=1.0.0",
     "pandas>=2.3.3",
     "plotly>=6.5.0",
+    "pydantic>=2.12.5",
     "pymorphy2>=0.9.1",
     "requests>=2.32.5",
     "strenum>=0.4.15",
@@ -38,6 +39,10 @@ metrics = [
 ]
 mlflow = [
     "mlflow>=3.8.1",
+]
+rag = [
+    "chromadb>=1.5.2",
+    "sentence-transformers>=5.2.3",
 ]
 visual = [
     "bertviz>=1.4.1",
