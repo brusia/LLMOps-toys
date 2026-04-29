@@ -10,10 +10,176 @@
     "JURISDICTION"
   ],
   "performance_metrics": {
-    "processing_time_seconds": 3337.913437604904,
-    "throughput_tokens_per_second": 12.63543851222909,
-    "total_contracts_processed": 10,
-    "total_tokens_processed": 42176
+    "processing_time_seconds": 1955.2629504203796,
+    "throughput_tokens_per_second": 16.11650238308098,
+    "total_contracts_processed": 50,
+    "total_tokens_processed": 31512
   },
-  "sample_results": []
+  "sample_results": [
+    {
+      "contract_id": 0,
+      "contract_text": "В соответствии с условиями настоящего Договора, Компания A обязуется предоставить услуги по разработ...",
+      "generated_entities": {
+        "PERSON": [
+          "Компания A",
+          "Компания B"
+        ],
+        "ORG": [
+          "Компания A",
+          "Компания B"
+        ],
+        "MONEY": [
+          "100 000 долларов"
+        ],
+        "DATE": [
+          "1 января 2024 года",
+          "31 декабря 2024 года"
+        ],
+        "CONTRACT_TYPE": [
+          " договор"
+        ],
+        "OBLIGATION": [
+          " предоставление услуг",
+          " оплату"
+        ],
+        "JURISDICTION": [
+          "г. Москвы"
+        ]
+      }
+    },
+    {
+      "contract_id": 1,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": " лица",
+        "ORG": "organизации",
+        "MONEY": "даты",
+        "DATE": "даты",
+        "CONTRACT_TYPE": " tipa kontракта",
+        "OBLIGATION": " обязательства",
+        "JURISDICTION": ""
+      }
+    },
+    {
+      "contract_id": 2,
+      "contract_text": "Клиент обязуется оплатить услуги по разработке мобильного приложения в размере 250 000 рублей в тече...",
+      "generated_entities": {
+        "PERSON": "Клиент",
+        "ORG": "Сотрудник",
+        "MONEY": "250 000 рублей",
+        "DATE": "10 рабочих дней",
+        "CONTRACT_TYPE": "отношение",
+        "OBLIGATION": "оплата",
+        "JURISDICTION": "Екатеринбург"
+      }
+    },
+    {
+      "contract_id": 3,
+      "contract_text": "Франчайзи обязуется соблюдать стандарты качества и маркетинговые требования franchisor'a. Сумма фран...",
+      "generated_entities": {
+        "PERSON": [],
+        "ORG": [],
+        "MONEY": [],
+        "DATE": [],
+        "CONTRACT_TYPE": "",
+        "OBLIGATION": [],
+        "JURISDICTION": ""
+      }
+    },
+    {
+      "contract_id": 4,
+      "contract_text": "Агент обязуется представлять интересы клиента при заключении сделок с поставщиками. Комиссионное воз...",
+      "generated_entities": {
+        "PERSON": "agent",
+        "ORG": "client",
+        "MONEY": "5%",
+        "DATE": "one year",
+        "CONTRACT_TYPE": "sales contract",
+        "OBLIGATION": "agent's obligation",
+        "JURISDICTION": "Kazani"
+      }
+    },
+    {
+      "contract_id": 5,
+      "contract_text": "В соответствии с условиями настоящего Договора, Компания F обязуется предоставить услуги по разработ...",
+      "generated_entities": {
+        "PERSON": [
+          "Компания F",
+          "Компания G"
+        ],
+        "ORG": [
+          "Компания F",
+          "Компания G"
+        ],
+        "MONEY": [
+          "100 000 долларов"
+        ],
+        "DATE": [
+          "1 января 2024",
+          "31 декабря 2024"
+        ],
+        "CONTRACT_TYPE": [
+          "напоминание"
+        ],
+        "OBLIGATION": [
+          "напоминание"
+        ],
+        "JURISDICTION": [
+          "Юрисдикация (г. Москвы)"
+        ]
+      }
+    },
+    {
+      "contract_id": 6,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": " лица",
+        "ORG": "organизации",
+        "MONEY": "даты",
+        "DATE": "даты",
+        "CONTRACT_TYPE": " tipa kontракта",
+        "OBLIGATION": " обязательства",
+        "JURISDICTION": ""
+      }
+    },
+    {
+      "contract_id": 7,
+      "contract_text": "Клиент обязуется оплатить услуги по разработке мобильного приложения в размере 250 000 рублей в тече...",
+      "generated_entities": {
+        "PERSON": "Клиент",
+        "ORG": "Сотрудник",
+        "MONEY": "250 000 рублей",
+        "DATE": "10 рабочих дней",
+        "CONTRACT_TYPE": "отношение",
+        "OBLIGATION": "оплата",
+        "JURISDICTION": "Екатеринбург"
+      }
+    },
+    {
+      "contract_id": 8,
+      "contract_text": "Франчайзи обязуется соблюдать стандарты качества и маркетинговые требования franchisor'a. Сумма фран...",
+      "generated_entities": {
+        "PERSON": [],
+        "ORG": [],
+        "MONEY": [],
+        "DATE": [],
+        "CONTRACT_TYPE": "",
+        "OBLIGATION": [],
+        "JURISDICTION": ""
+      }
+    },
+    {
+      "contract_id": 9,
+      "contract_text": "Агент обязуется представлять интересы клиента при заключении сделок с поставщиками. Комиссионное воз...",
+      "generated_entities": {
+        "PERSON": "agent",
+        "ORG": "client",
+        "MONEY": "5%",
+        "DATE": "one year",
+        "CONTRACT_TYPE": "sales contract",
+        "OBLIGATION": "agent's obligation",
+        "JURISDICTION": "Kazani"
+      }
+    }
+  ]
 }

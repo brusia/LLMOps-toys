@@ -2689,6 +2689,7 @@ mlflow = [
 ner = [
     { name = "accelerate" },
     { name = "sentencepiece" },
+    { name = "tqdm" },
 ]
 rag = [
     { name = "chromadb" },
@@ -2737,6 +2738,7 @@ mlflow = [{ name = "mlflow", specifier = ">=3.8.1" }]
 ner = [
     { name = "accelerate", specifier = ">=1.13.0" },
     { name = "sentencepiece", specifier = ">=0.2.1" },
+    { name = "tqdm", specifier = ">=4.67.1" },
 ]
 rag = [
     { name = "chromadb", specifier = ">=1.5.2" },

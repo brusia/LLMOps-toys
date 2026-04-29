@@ -42,6 +42,7 @@ mlflow = [
 ner = [
     "accelerate>=1.13.0",
     "sentencepiece>=0.2.1",
+    "tqdm>=4.67.1",
 ]
 rag = [
     "chromadb>=1.5.2",

@@ -7,6 +7,7 @@ from pathlib import Path
 import torch
 from typing import List, Dict, Any
 import time
+from tqdm import tqdm
 import json
 
 # Настройка логирования
@@ -195,6 +196,95 @@ def build_prompt(entity_type: str, contract_text: str) -> str:
     prompt_template = prompts.get(entity_type, "")
     return prompt_template.format(contract_text=contract_text)
 
+# Альтернативный подход для одновременного извлечения всех сущностей
+def extract_all_entities(model, tokenizer, contract_text: str, entity_types: List[str], device: str = "cpu") -> Dict[str, Any] | None:
+    """
+    Извлекает все сущности одновременно.
+    """
+    # Создаем единый промпт для всех сущностей
+    prompt = f"""
+    Из следующего юридического контракта извлеките все следующие типы сущностей:
+    
+    Контракт: {contract_text}
+    
+    Сущности для извлечения:
+    - PERSON: лица
+    - ORG: организации  
+    - MONEY: денежные суммы
+    - DATE: даты
+    - CONTRACT_TYPE: тип контракта
+    - OBLIGATION: обязательства
+    - JURISDICTION: юрисдикция
+    
+    Ответьте в формате JSON с ключами для каждого типа сущности.
+    """
+    
+    # Токенизация
+    inputs = tokenizer(
+        prompt,
+        return_tensors="pt",
+        padding=True,
+        truncation=True,
+        max_length=2048
+    ).to(device)
+    
+    # Генерация ответа
+    outputs = model.generate(
+        **inputs,
+        max_new_tokens=1024,
+        do_sample=False,
+        pad_token_id=tokenizer.pad_token_id
+    )
+    
+    # Декодирование результата
+    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+    # Реальный парсинг JSON результата
+    generated_entities = {
+        "PERSON": [],
+        "ORG": [], 
+        "MONEY": [],
+        "DATE": [],
+        "CONTRACT_TYPE": "",
+        "OBLIGATION": [],
+        "JURISDICTION": ""
+    }
+    
+    try:
+        # Пробуем извлечь JSON из ответа
+        import json
+        import re
+        
+        # Ищем JSON в ответе (если он есть)
+        json_match = re.search(r'\{.*\}', response, re.DOTALL)
+        if json_match:
+            json_string = json_match.group(0)
+            # Парсим JSON
+            parsed_response = json.loads(json_string)
+            
+            # Заполняем результаты из парснутого JSON
+            if isinstance(parsed_response, dict):
+                for key, value in parsed_response.items():
+                    if key in generated_entities:
+                        if isinstance(value, list):
+                            generated_entities[key] = value
+                        else:
+                            generated_entities[key] = str(value) if value is not None else ""
+        else:
+            # Если JSON не найден, выбрасываем ошибку
+            raise ValueError("JSON не найден в ответе модели")
+                
+    except Exception as e:
+        logger.error(f"Ошибка при парсинге ответа: {e}")
+        # В случае ошибки выбрасываем исключение
+        return None
+    
+    return {
+        "response": response,
+        "generated_entities": generated_entities,
+        "tokens_generated": len(outputs[0])
+    }
+
 @torch.no_grad()
 def extract_entities(model, tokenizer, contract_text: str, entity_types: List[str], device: str = "cpu") -> Dict[str, Any]:
     """
@@ -284,24 +374,36 @@ def benchmark_performance(model, tokenizer, contracts: List[Dict[str, Any]], ent
     total_time = 0
     total_tokens = 0
     total_examples = len(contracts)
-    
+
+    sample_results = []
     # Для каждого контракта извлекаем сущности
-    for i, contract in enumerate(contracts):
+
+    pbar = tqdm(contracts, desc="Обработка контрактов")
+    for i, contract in enumerate(pbar):
         logger.debug(f"Обработка контракта {i+1}/{total_examples}")
         
         start_time = time.time()
-        results = extract_entities(model, tokenizer, contract["contract_text"], entity_types, device)
+        #ADR: Для более точного извлечения рекумендуется использовать методв extract_entities (отдельный промпт для извлечения каждой сущности)
+        results = extract_all_entities(model, tokenizer, contract["contract_text"], entity_types, device)
+        if not results:
+            logger.error("Не удалось извлечь сущности, документ будет пропущен.")
+            continue
         end_time = time.time()
         
         contract_time = end_time - start_time
         total_time += contract_time
         
         # Суммируем количество токенов
-        for entity_result in results.values():
-            total_tokens += entity_result.get("tokens_generated", 0)
-        
-        if i % 10 == 0:
-            logger.info(f"Обработано {i+1} контрактов")
+        tokens_generated = results.get("tokens_generated", 0)
+        total_tokens += tokens_generated
+
+        if len(sample_results) < 10:
+            sample_results.append({
+                "contract_id": i,
+                "contract_text": contract["contract_text"][:100] + "...",
+                "generated_entities": results["generated_entities"]
+            })
+
     
     avg_time_per_contract = total_time / total_examples
     avg_tokens_per_contract = total_tokens / total_examples
@@ -312,7 +414,8 @@ def benchmark_performance(model, tokenizer, contracts: List[Dict[str, Any]], ent
         "avg_time_per_contract_seconds": avg_time_per_contract,
         "total_tokens_generated": total_tokens,
         "avg_tokens_per_contract": avg_tokens_per_contract,
-        "throughput_tokens_per_second": total_tokens / total_time if total_time > 0 else 0
+        "throughput_tokens_per_second": total_tokens / total_time if total_time > 0 else 0,
+        "sample_results": sample_results,
     }
     
     logger.info("Бенчмарк завершен")
@@ -371,7 +474,7 @@ def main(args):
             "total_contracts_processed": stats["total_contracts"],
             "total_tokens_processed": stats["total_tokens_generated"]
         },
-        "sample_results": []  # В реальной реализации здесь будут результаты извлечения
+        "sample_results": stats["sample_results"],
     }
     
     with open(output_path, "w", encoding="utf-8") as f:
@@ -382,7 +485,7 @@ def main(args):
     # Шаг 5: Генерация отчета
     logger.info("5. Генерация отчета")
     
-    report = []
+    report: list[Unknown] = []
     report.append("=" * 60)
     report.append("ОТЧЕТ ПО ВЫПОЛНЕНИЮ ЗАДАЧИ ИЗВЛЕЧЕНИЯ СУЩНОСТЕЙ")
     report.append("=" * 60)
@@ -407,7 +510,7 @@ if __name__ == "__main__":
                         default="Qwen/Qwen2-0.5B",
                         help="Модель для NER",
                         )
-                        
+
     parser.add_argument("--dataset-size", 
                        type=int, 
                        default=100,
