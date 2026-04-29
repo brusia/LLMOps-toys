@@ -1,0 +1,19 @@
+{
+  "model_used": "TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T",
+  "entities_extracted": [
+    "PERSON",
+    "ORG",
+    "MONEY",
+    "DATE",
+    "CONTRACT_TYPE",
+    "OBLIGATION",
+    "JURISDICTION"
+  ],
+  "performance_metrics": {
+    "processing_time_seconds": 4009.7571618556976,
+    "throughput_tokens_per_second": 12.031651307699864,
+    "total_contracts_processed": 10,
+    "total_tokens_processed": 48244
+  },
+  "sample_results": []
+}

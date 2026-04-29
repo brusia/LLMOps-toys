@@ -39,6 +39,14 @@ metrics = [
 mlflow = [
     "mlflow>=3.8.1",
 ]
+ner = [
+    "accelerate>=1.13.0",
+    "sentencepiece>=0.2.1",
+]
+rag = [
+    "chromadb>=1.5.2",
+    "sentence-transformers>=5.2.3",
+]
 visual = [
     "bertviz>=1.4.1",
     "matplotlib>=3.10.7",

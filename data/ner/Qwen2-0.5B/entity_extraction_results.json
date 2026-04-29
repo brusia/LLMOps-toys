@@ -1,0 +1,19 @@
+{
+  "model_used": "Qwen/Qwen2-0.5B",
+  "entities_extracted": [
+    "PERSON",
+    "ORG",
+    "MONEY",
+    "DATE",
+    "CONTRACT_TYPE",
+    "OBLIGATION",
+    "JURISDICTION"
+  ],
+  "performance_metrics": {
+    "processing_time_seconds": 962.717401266098,
+    "throughput_tokens_per_second": 39.451868170295946,
+    "total_contracts_processed": 10,
+    "total_tokens_processed": 37981
+  },
+  "sample_results": []
+}

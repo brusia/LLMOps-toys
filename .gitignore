@@ -12,3 +12,5 @@ cache
 __pycache__
 env_file
 extracted_texts
+lora_finetuned
+lora_with_tools
