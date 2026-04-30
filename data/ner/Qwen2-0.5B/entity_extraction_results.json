@@ -10,10 +10,273 @@
     "JURISDICTION"
   ],
   "performance_metrics": {
-    "processing_time_seconds": 962.717401266098,
-    "throughput_tokens_per_second": 39.451868170295946,
-    "total_contracts_processed": 10,
-    "total_tokens_processed": 37981
+    "processing_time_seconds": 470.7243540287018,
+    "throughput_tokens_per_second": 31.436656874349254,
+    "total_contracts_processed": 50,
+    "total_tokens_processed": 14798
   },
-  "sample_results": []
+  "sample_results": [
+    {
+      "contract_id": 0,
+      "contract_text": "В соответствии с условиями настоящего Договора, Компания A обязуется предоставить услуги по разработ...",
+      "generated_entities": {
+        "PERSON": [
+          {
+            "name": "John Doe",
+            "age": 30,
+            "address": "123 Main St, Anytown, USA"
+          },
+          {
+            "name": "Jane Smith",
+            "age": 25,
+            "address": "456 Elm St, Anytown, USA"
+          }
+        ],
+        "ORG": [
+          {
+            "name": "ABC Corp",
+            "address": "123 Main St, Anytown, USA"
+          },
+          {
+            "name": "XYZ Ltd",
+            "address": "456 Elm St, Anytown, USA"
+          }
+        ],
+        "MONEY": [
+          {
+            "amount": 100000,
+            "currency": "USD"
+          },
+          {
+            "amount": 50000,
+            "currency": "EUR"
+          }
+        ],
+        "DATE": [
+          {
+            "date": "2024-01-01",
+            "type": "date"
+          },
+          {
+            "date": "2024-01-02",
+            "type": "date"
+          }
+        ],
+        "CONTRACT_TYPE": [
+          {
+            "type": "software",
+            "description": "Software development"
+          },
+          {
+            "type": "hardware",
+            "description": "Hardware development"
+          }
+        ],
+        "OBLIGATION": [
+          {
+            "type": "payment",
+            "amount": 100000,
+            "currency": "USD"
+          },
+          {
+            "type": "payment",
+            "amount": 50000,
+            "currency": "EUR"
+          }
+        ],
+        "JURISDICTION": [
+          {
+            "type": "US",
+            "country": "USA"
+          },
+          {
+            "type": "UK",
+            "country": "UK"
+          }
+        ]
+      }
+    },
+    {
+      "contract_id": 1,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': 'John Doe', 'age': 30, 'address': '123 Main St, City, Country'}",
+        "ORG": "{'name': 'ABC Corp', 'address': '456 Main St, City, Country'}",
+        "MONEY": "{'amount': 50000, 'currency': 'EUR'}",
+        "DATE": "{'date': '2022-01-01', 'time': '10:00'}",
+        "CONTRACT_TYPE": "Contract",
+        "OBLIGATION": "{'type': 'Contract', 'amount': 50000, 'currency': 'EUR'}",
+        "JURISDICTION": "United States"
+      }
+    },
+    {
+      "contract_id": 6,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': 'John Doe', 'age': 30, 'address': '123 Main St, City, Country'}",
+        "ORG": "{'name': 'ABC Corp', 'address': '456 Main St, City, Country'}",
+        "MONEY": "{'amount': 50000, 'currency': 'EUR'}",
+        "DATE": "{'date': '2022-01-01', 'time': '10:00'}",
+        "CONTRACT_TYPE": "Contract",
+        "OBLIGATION": "{'type': 'Contract', 'amount': 50000, 'currency': 'EUR'}",
+        "JURISDICTION": "United States"
+      }
+    },
+    {
+      "contract_id": 11,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': 'John Doe', 'age': 30, 'address': '123 Main St, City, Country'}",
+        "ORG": "{'name': 'ABC Corp', 'address': '456 Main St, City, Country'}",
+        "MONEY": "{'amount': 50000, 'currency': 'EUR'}",
+        "DATE": "{'date': '2022-01-01', 'time': '10:00'}",
+        "CONTRACT_TYPE": "Contract",
+        "OBLIGATION": "{'type': 'Contract', 'amount': 50000, 'currency': 'EUR'}",
+        "JURISDICTION": "United States"
+      }
+    },
+    {
+      "contract_id": 16,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': 'John Doe', 'age': 30, 'address': '123 Main St, City, Country'}",
+        "ORG": "{'name': 'ABC Corp', 'address': '456 Main St, City, Country'}",
+        "MONEY": "{'amount': 50000, 'currency': 'EUR'}",
+        "DATE": "{'date': '2022-01-01', 'time': '10:00'}",
+        "CONTRACT_TYPE": "Contract",
+        "OBLIGATION": "{'type': 'Contract', 'amount': 50000, 'currency': 'EUR'}",
+        "JURISDICTION": "United States"
+      }
+    },
+    {
+      "contract_id": 21,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': 'John Doe', 'age': 30, 'address': '123 Main St, City, Country'}",
+        "ORG": "{'name': 'ABC Corp', 'address': '456 Main St, City, Country'}",
+        "MONEY": "{'amount': 50000, 'currency': 'EUR'}",
+        "DATE": "{'date': '2022-01-01', 'time': '10:00'}",
+        "CONTRACT_TYPE": "Contract",
+        "OBLIGATION": "{'type': 'Contract', 'amount': 50000, 'currency': 'EUR'}",
+        "JURISDICTION": "United States"
+      }
+    },
+    {
+      "contract_id": 25,
+      "contract_text": "В соответствии с условиями настоящего Договора, Компания Z обязуется предоставить услуги по разработ...",
+      "generated_entities": {
+        "PERSON": [
+          {
+            "name": "John Doe",
+            "age": 30,
+            "address": "123 Main St, Anytown, USA"
+          },
+          {
+            "name": "Jane Smith",
+            "age": 25,
+            "address": "456 Elm St, Anytown, USA"
+          }
+        ],
+        "ORG": [
+          {
+            "name": "ABC Corp",
+            "address": "123 Main St, Anytown, USA"
+          },
+          {
+            "name": "XYZ Ltd",
+            "address": "456 Elm St, Anytown, USA"
+          }
+        ],
+        "MONEY": [
+          {
+            "amount": 100000,
+            "currency": "USD"
+          },
+          {
+            "amount": 50000,
+            "currency": "EUR"
+          }
+        ],
+        "DATE": [
+          {
+            "date": "2024-01-01",
+            "type": "date"
+          },
+          {
+            "date": "2024-01-02",
+            "type": "date"
+          }
+        ],
+        "CONTRACT_TYPE": [
+          {
+            "type": "software",
+            "description": "Software development"
+          },
+          {
+            "type": "hardware",
+            "description": "Hardware development"
+          }
+        ],
+        "OBLIGATION": [
+          {
+            "type": "contract",
+            "description": "Contract"
+          },
+          {
+            "type": "contract",
+            "description": "Contract"
+          }
+        ],
+        "JURISDICTION": [
+          {
+            "type": "company",
+            "description": "Company"
+          },
+          {
+            "type": "company",
+            "description": "Company"
+          }
+        ]
+      }
+    },
+    {
+      "contract_id": 26,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': 'John Doe', 'age': 30, 'address': '123 Main St, City, Country'}",
+        "ORG": "{'name': 'ABC Corp', 'address': '456 Main St, City, Country'}",
+        "MONEY": "{'amount': 50000, 'currency': 'EUR'}",
+        "DATE": "{'date': '2022-01-01', 'time': '10:00'}",
+        "CONTRACT_TYPE": "Contract",
+        "OBLIGATION": "{'type': 'Contract', 'amount': 50000, 'currency': 'EUR'}",
+        "JURISDICTION": "United States"
+      }
+    },
+    {
+      "contract_id": 31,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': 'John Doe', 'age': 30, 'address': '123 Main St, City, Country'}",
+        "ORG": "{'name': 'ABC Corp', 'address': '456 Main St, City, Country'}",
+        "MONEY": "{'amount': 50000, 'currency': 'EUR'}",
+        "DATE": "{'date': '2022-01-01', 'time': '10:00'}",
+        "CONTRACT_TYPE": "Contract",
+        "OBLIGATION": "{'type': 'Contract', 'amount': 50000, 'currency': 'EUR'}",
+        "JURISDICTION": "United States"
+      }
+    },
+    {
+      "contract_id": 36,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': 'John Doe', 'age': 30, 'address': '123 Main St, City, Country'}",
+        "ORG": "{'name': 'ABC Corp', 'address': '456 Main St, City, Country'}",
+        "MONEY": "{'amount': 50000, 'currency': 'EUR'}",
+        "DATE": "{'date': '2022-01-01', 'time': '10:00'}",
+        "CONTRACT_TYPE": "Contract",
+        "OBLIGATION": "{'type': 'Contract', 'amount': 50000, 'currency': 'EUR'}",
+        "JURISDICTION": "United States"
+      }
+    }
+  ]
 }

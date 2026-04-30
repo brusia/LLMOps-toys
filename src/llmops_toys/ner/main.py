@@ -215,8 +215,10 @@ def extract_all_entities(model, tokenizer, contract_text: str, entity_types: Lis
     - CONTRACT_TYPE: тип контракта
     - OBLIGATION: обязательства
     - JURISDICTION: юрисдикция
-    
-    Ответьте в формате JSON с ключами для каждого типа сущности.
+
+    Ответьте в формате JSON с ключами для каждого типа сущности. Верни только JSON. Перед выводом проверь, что выдаётся только JSON, который можно будет распарсить. Не нужно приводить one-shot, few-shot примеры.
+
+    Финальный JSON:
     """
     
     # Токенизация
@@ -275,8 +277,7 @@ def extract_all_entities(model, tokenizer, contract_text: str, entity_types: Lis
             raise ValueError("JSON не найден в ответе модели")
                 
     except Exception as e:
-        logger.error(f"Ошибка при парсинге ответа: {e}")
-        # В случае ошибки выбрасываем исключение
+        logger.exception(f"Ошибка при парсинге ответа: {e}")
         return None
     
     return {

@@ -10,10 +10,141 @@
     "JURISDICTION"
   ],
   "performance_metrics": {
-    "processing_time_seconds": 4009.7571618556976,
-    "throughput_tokens_per_second": 12.031651307699864,
-    "total_contracts_processed": 10,
-    "total_tokens_processed": 48244
+    "processing_time_seconds": 4184.407722234726,
+    "throughput_tokens_per_second": 13.052026385906844,
+    "total_contracts_processed": 50,
+    "total_tokens_processed": 54615
   },
-  "sample_results": []
+  "sample_results": [
+    {
+      "contract_id": 1,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'address': '1234 Main St', 'city': 'Santa Clara', 'state': 'CA', 'country': 'USA'}",
+        "ORG": "{'name': 'Google', 'address': '1600 Amphitheatre Pkwy', 'city': 'Mountain View', 'state': 'CA', 'country': 'USA'}",
+        "MONEY": "{'value': 1000000, 'currency': 'USD'}",
+        "DATE": "{'date': '2017-01-01'}",
+        "CONTRACT_TYPE": "Sales Contract",
+        "OBLIGATION": "Sales Contract",
+        "JURISDICTION": "USA"
+      }
+    },
+    {
+      "contract_id": 2,
+      "contract_text": "Клиент обязуется оплатить услуги по разработке мобильного приложения в размере 250 000 рублей в тече...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'sex': 'male', 'birthdate': '1990-01-01'}",
+        "ORG": "{'name': 'ООО \"Приват-инвест\"', 'address': 'ул. Свердлова, 12', 'city': 'Екатеринбург', 'country': 'Россия', 'phone': '8 (312) 333-33-33', 'email': '<EMAIL>'}",
+        "MONEY": "{'amount': 250000, 'currency': 'RUB'}",
+        "DATE": "{'date': '2017-01-01'}",
+        "CONTRACT_TYPE": "contract",
+        "OBLIGATION": "obligation",
+        "JURISDICTION": "russia"
+      }
+    },
+    {
+      "contract_id": 3,
+      "contract_text": "Франчайзи обязуется соблюдать стандарты качества и маркетинговые требования franchisor'a. Сумма фран...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'occupation': 'Студент'}",
+        "ORG": "{'name': 'Компания', 'address': '123 Main St.', 'city': 'New York', 'state': 'NY', 'zip': '10001'}",
+        "MONEY": "{'amount': 150000, 'currency': 'USD'}",
+        "DATE": "{'date': '2017-01-01', 'time': '12:00:00 AM'}",
+        "CONTRACT_TYPE": "Franchise",
+        "OBLIGATION": "150000",
+        "JURISDICTION": "US"
+      }
+    },
+    {
+      "contract_id": 4,
+      "contract_text": "Агент обязуется представлять интересы клиента при заключении сделок с поставщиками. Комиссионное воз...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'address': '123 Main St.', 'city': 'New York', 'state': 'NY', 'country': 'USA'}",
+        "ORG": "{'name': 'Amazon', 'address': '1234 Main St.', 'city': 'New York', 'state': 'NY', 'country': 'USA'}",
+        "MONEY": "{'amount': 1000000, 'currency': 'USD'}",
+        "DATE": "{'date': '2018-01-01', 'time': '12:00:00'}",
+        "CONTRACT_TYPE": "agency",
+        "OBLIGATION": "buy",
+        "JURISDICTION": "state"
+      }
+    },
+    {
+      "contract_id": 6,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'address': '1234 Main St', 'city': 'Santa Clara', 'state': 'CA', 'country': 'USA'}",
+        "ORG": "{'name': 'Google', 'address': '1600 Amphitheatre Pkwy', 'city': 'Mountain View', 'state': 'CA', 'country': 'USA'}",
+        "MONEY": "{'value': 1000000, 'currency': 'USD'}",
+        "DATE": "{'date': '2017-01-01'}",
+        "CONTRACT_TYPE": "Sales Contract",
+        "OBLIGATION": "Sales Contract",
+        "JURISDICTION": "USA"
+      }
+    },
+    {
+      "contract_id": 7,
+      "contract_text": "Клиент обязуется оплатить услуги по разработке мобильного приложения в размере 250 000 рублей в тече...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'sex': 'male', 'birthdate': '1990-01-01'}",
+        "ORG": "{'name': 'ООО \"Приват-инвест\"', 'address': 'ул. Свердлова, 12', 'city': 'Екатеринбург', 'country': 'Россия', 'phone': '8 (312) 333-33-33', 'email': '<EMAIL>'}",
+        "MONEY": "{'amount': 250000, 'currency': 'RUB'}",
+        "DATE": "{'date': '2017-01-01'}",
+        "CONTRACT_TYPE": "contract",
+        "OBLIGATION": "obligation",
+        "JURISDICTION": "russia"
+      }
+    },
+    {
+      "contract_id": 8,
+      "contract_text": "Франчайзи обязуется соблюдать стандарты качества и маркетинговые требования franchisor'a. Сумма фран...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'occupation': 'Студент'}",
+        "ORG": "{'name': 'Компания', 'address': '123 Main St.', 'city': 'New York', 'state': 'NY', 'zip': '10001'}",
+        "MONEY": "{'amount': 150000, 'currency': 'USD'}",
+        "DATE": "{'date': '2017-01-01', 'time': '12:00:00 AM'}",
+        "CONTRACT_TYPE": "Franchise",
+        "OBLIGATION": "150000",
+        "JURISDICTION": "US"
+      }
+    },
+    {
+      "contract_id": 9,
+      "contract_text": "Агент обязуется представлять интересы клиента при заключении сделок с поставщиками. Комиссионное воз...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'address': '123 Main St.', 'city': 'New York', 'state': 'NY', 'country': 'USA'}",
+        "ORG": "{'name': 'Amazon', 'address': '1234 Main St.', 'city': 'New York', 'state': 'NY', 'country': 'USA'}",
+        "MONEY": "{'amount': 1000000, 'currency': 'USD'}",
+        "DATE": "{'date': '2018-01-01', 'time': '12:00:00'}",
+        "CONTRACT_TYPE": "agency",
+        "OBLIGATION": "buy",
+        "JURISDICTION": "state"
+      }
+    },
+    {
+      "contract_id": 11,
+      "contract_text": "Поставщик обязуется поставлять товары согласно спецификации, сроки поставки - до 30 дней после подпи...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'address': '1234 Main St', 'city': 'Santa Clara', 'state': 'CA', 'country': 'USA'}",
+        "ORG": "{'name': 'Google', 'address': '1600 Amphitheatre Pkwy', 'city': 'Mountain View', 'state': 'CA', 'country': 'USA'}",
+        "MONEY": "{'value': 1000000, 'currency': 'USD'}",
+        "DATE": "{'date': '2017-01-01'}",
+        "CONTRACT_TYPE": "Sales Contract",
+        "OBLIGATION": "Sales Contract",
+        "JURISDICTION": "USA"
+      }
+    },
+    {
+      "contract_id": 12,
+      "contract_text": "Клиент обязуется оплатить услуги по разработке мобильного приложения в размере 250 000 рублей в тече...",
+      "generated_entities": {
+        "PERSON": "{'name': '<NAME>', 'age': 25, 'sex': 'male', 'birthdate': '1990-01-01'}",
+        "ORG": "{'name': 'ООО \"Приват-инвест\"', 'address': 'ул. Свердлова, 12', 'city': 'Екатеринбург', 'country': 'Россия', 'phone': '8 (312) 333-33-33', 'email': '<EMAIL>'}",
+        "MONEY": "{'amount': 250000, 'currency': 'RUB'}",
+        "DATE": "{'date': '2017-01-01'}",
+        "CONTRACT_TYPE": "contract",
+        "OBLIGATION": "obligation",
+        "JURISDICTION": "russia"
+      }
+    }
+  ]
 }
